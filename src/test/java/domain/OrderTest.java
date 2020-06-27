@@ -7,6 +7,11 @@ import java.util.Map;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import domain.table.order.Order;
+import domain.table.order.OrderCount;
+import domain.table.order.menu.Category;
+import domain.table.order.menu.Menu;
+
 class OrderTest {
 	@DisplayName("메뉴를 추가하여 갯수를 확인한다.")
 	@Test

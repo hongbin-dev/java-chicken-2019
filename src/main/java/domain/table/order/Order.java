@@ -1,7 +1,9 @@
-package domain;
+package domain.table.order;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import domain.table.order.menu.Menu;
 
 public class Order {
 	private final Map<Menu, OrderCount> orderByCount;

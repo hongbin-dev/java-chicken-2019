@@ -7,6 +7,12 @@ import java.util.Map;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import domain.table.Table;
+import domain.table.order.Order;
+import domain.table.order.OrderCount;
+import domain.table.order.menu.Category;
+import domain.table.order.menu.Menu;
+
 class TableTest {
 
 	@DisplayName("테이블에 주문을 추가한다.")

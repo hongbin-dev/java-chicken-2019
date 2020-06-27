@@ -1,4 +1,4 @@
-package domain;
+package domain.table.order;
 
 import java.util.Map;
 import java.util.stream.Collectors;

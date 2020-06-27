@@ -2,7 +2,7 @@ package view;
 
 import java.util.Scanner;
 
-import domain.Table;
+import domain.table.Table;
 
 public class InputView {
 	private final Scanner scanner;

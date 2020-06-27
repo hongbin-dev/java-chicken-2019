@@ -1,4 +1,4 @@
-package domain;
+package domain.table;
 
 import static java.util.stream.Collectors.*;
 
@@ -13,7 +13,7 @@ public class Tables {
 			.collect(toMap(Table::getNumber, table -> table));
 	}
 
-	public Table getTable(int tableNumber) {
+	public Table findTable(int tableNumber) {
 		if (!tableById.containsKey(tableNumber)) {
 			throw new IllegalArgumentException("찾을 수 없는 테이블입니다. tableNumber =" + tableNumber);
 		}
@@ -24,8 +24,8 @@ public class Tables {
 		return tableById;
 	}
 
-	public Table getOrderedTable(int tableNumber) {
-		Table table = getTable(tableNumber);
+	public Table findOrderedTable(int tableNumber) {
+		Table table = findTable(tableNumber);
 
 		if (table.isEmpty()) {
 			throw new IllegalArgumentException("주문되지 않는 테이블입니다. tableNumber =" + tableNumber);

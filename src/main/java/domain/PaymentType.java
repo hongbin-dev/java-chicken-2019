@@ -2,6 +2,8 @@ package domain;
 
 import java.util.Arrays;
 
+import domain.table.order.Order;
+
 public enum PaymentType {
 	CARD(1),
 	CACHE(2);

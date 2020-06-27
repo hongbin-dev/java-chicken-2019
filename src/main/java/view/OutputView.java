@@ -3,11 +3,11 @@ package view;
 import java.util.Collection;
 import java.util.Map;
 
-import domain.Menu;
-import domain.Menus;
-import domain.OrderCount;
-import domain.Table;
-import domain.Tables;
+import domain.table.Table;
+import domain.table.Tables;
+import domain.table.order.OrderCount;
+import domain.table.order.menu.Menu;
+import domain.table.order.menu.Menus;
 
 public class OutputView {
 	private static final String TOP_LINE = "┌ ─ ┐";

@@ -5,6 +5,10 @@ import static org.assertj.core.api.Assertions.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import domain.table.order.menu.Menu;
+import domain.table.order.menu.MenuRepository;
+import domain.table.order.menu.Menus;
+
 class MenusTest {
 
 	@DisplayName("메뉴 번호에 맞는 메뉴를 가져온다.")
@@ -12,7 +16,7 @@ class MenusTest {
 	void getOrThrow() {
 		Menus menus = new Menus(MenuRepository.menus());
 
-		Menu menu = menus.getOrThrow(1);
+		Menu menu = menus.findMenu(1);
 
 		assertThat(menu).isNotNull();
 	}
@@ -22,7 +26,7 @@ class MenusTest {
 	void name() {
 		Menus menus = new Menus(MenuRepository.menus());
 
-		assertThatThrownBy(() -> menus.getOrThrow(-1))
+		assertThatThrownBy(() -> menus.findMenu(-1))
 			.isInstanceOf(IllegalArgumentException.class)
 			.hasMessageContaining("찾을 수 없는 메뉴입니다.");
 	}

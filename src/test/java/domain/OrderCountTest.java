@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import domain.table.order.OrderCount;
+
 class OrderCountTest {
 	@DisplayName("주문수량은 1~99를 넘지 않는다.")
 	@ValueSource(ints = {0, 100})

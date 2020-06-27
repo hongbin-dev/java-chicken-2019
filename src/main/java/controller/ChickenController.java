@@ -1,14 +1,14 @@
 package controller;
 
-import domain.Menu;
-import domain.MenuRepository;
-import domain.Menus;
-import domain.OrderCount;
 import domain.PaymentType;
 import domain.PosMenu;
-import domain.Table;
-import domain.TableRepository;
-import domain.Tables;
+import domain.table.Table;
+import domain.table.TableRepository;
+import domain.table.Tables;
+import domain.table.order.OrderCount;
+import domain.table.order.menu.Menu;
+import domain.table.order.menu.MenuRepository;
+import domain.table.order.menu.Menus;
 import view.InputView;
 import view.OutputView;
 
@@ -32,17 +32,17 @@ public class ChickenController {
 			PosMenu posMenu = PosMenu.of(function);
 			if (PosMenu.ORDER == posMenu) {
 				outputView.printTables(tables);
-				Table table = tables.getTable(inputView.inputTableNumber());
+				Table table = tables.findTable(inputView.inputTableNumber());
 
 				outputView.printMenus(menus);
-				Menu menu = menus.getOrThrow(inputView.inputSelectMenu());
+				Menu menu = menus.findMenu(inputView.inputSelectMenu());
 
 				OrderCount orderCount = OrderCount.of(inputView.inputMenuAmount());
 
 				table.addOrder(menu, orderCount);
 			} else if (PosMenu.PAYMENT == posMenu) {
 				outputView.printTables(tables);
-				Table table = tables.getOrderedTable(inputView.inputTableNumber());
+				Table table = tables.findOrderedTable(inputView.inputTableNumber());
 
 				outputView.printOrderHistory(table);
 				PaymentType paymentType = PaymentType.of(inputView.inputSelectPayment(table));

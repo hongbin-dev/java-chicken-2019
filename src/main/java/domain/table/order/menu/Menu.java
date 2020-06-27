@@ -1,4 +1,4 @@
-package domain;
+package domain.table.order.menu;
 
 import java.util.Objects;
 

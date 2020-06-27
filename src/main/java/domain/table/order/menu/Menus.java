@@ -1,4 +1,4 @@
-package domain;
+package domain.table.order.menu;
 
 import static java.util.stream.Collectors.*;
 
@@ -13,7 +13,7 @@ public class Menus {
 			.collect(toMap(Menu::getNumber, menu -> menu));
 	}
 
-	public Menu getOrThrow(int menuNumber) {
+	public Menu findMenu(int menuNumber) {
 		if (menuById.containsKey(menuNumber)) {
 			return menuById.get(menuNumber);
 		}
