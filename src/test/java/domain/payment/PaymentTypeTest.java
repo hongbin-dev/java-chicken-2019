@@ -55,4 +55,18 @@ class PaymentTypeTest {
 
 		assertThat(actual).isEqualTo(95000);
 	}
+
+	@DisplayName("치킨할인과 현금할인을 계산한다.")
+	@Test
+	void name5() {
+		PaymentType paymentType = PaymentType.CACHE;
+
+		Order order = new Order();
+		order.add(new Menu(1, "얌얌", Category.CHICKEN, 10000), OrderCount.of(5));
+		order.add(new Menu(2, "얌얌이", Category.CHICKEN, 10000), OrderCount.of(5));
+
+		long actual = paymentType.calculatePrice(order);
+
+		assertThat(actual).isEqualTo(85_500);
+	}
 }

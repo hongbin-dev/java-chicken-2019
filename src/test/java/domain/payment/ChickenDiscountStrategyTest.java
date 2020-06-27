@@ -2,6 +2,7 @@ package domain.payment;
 
 import static org.assertj.core.api.Assertions.*;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import domain.table.order.Order;
@@ -10,6 +11,7 @@ import domain.table.order.menu.Category;
 import domain.table.order.menu.Menu;
 
 class ChickenDiscountStrategyTest {
+	@DisplayName("치킨의 할인가를 계산한다.")
 	@Test
 	void calculate() {
 		ChickenDiscountStrategy chickenDiscountStrategy = new ChickenDiscountStrategy();
@@ -22,7 +24,7 @@ class ChickenDiscountStrategyTest {
 
 		long actual = chickenDiscountStrategy.calculate(100_000, order);
 
-		assertThat(actual).isEqualTo(90_000);
+		assertThat(actual).isEqualTo(10_000);
 	}
 
 }

@@ -32,7 +32,7 @@ public class InputView {
 	}
 
 	public int inputSelectPayment(Table table) {
-		System.out.println("## 1번 테이블의 결제를 진행합니다.");
+		System.out.printf("## %d번 테이블의 결제를 진행합니다.\n", table.getNumber());
 		System.out.println("## 신용 카드는 1번, 현금은 2번");
 		return scanner.nextInt();
 	}
