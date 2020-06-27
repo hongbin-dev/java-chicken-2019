@@ -1,9 +1,13 @@
 package view;
 
-import java.util.List;
+import java.util.Collection;
+import java.util.Map;
 
 import domain.Menu;
+import domain.Menus;
+import domain.OrderCount;
 import domain.Table;
+import domain.Tables;
 
 public class OutputView {
 	private static final String TOP_LINE = "┌ ─ ┐";
@@ -17,16 +21,17 @@ public class OutputView {
 		System.out.println("3 - 프로그램 종료");
 	}
 
-	public void printTables(final List<Table> tables) {
+	public void printTables(final Tables tables) {
 		System.out.println("## 테이블 목록");
-		final int size = tables.size();
+		final int size = tables.getTableById().size();
 		printLine(TOP_LINE, size);
-		printTableNumbers(tables);
+		printTableNumbers(tables.getTableById().values());
 		printLine(BOTTOM_LINE, size);
 	}
 
-	public void printMenus(final List<Menu> menus) {
-		for (final Menu menu : menus) {
+	public void printMenus(final Menus menus) {
+		Map<Integer, Menu> menuById = menus.getMenuById();
+		for (final Menu menu : menuById.values()) {
 			System.out.println(menu);
 		}
 	}
@@ -38,10 +43,24 @@ public class OutputView {
 		System.out.println();
 	}
 
-	private void printTableNumbers(final List<Table> tables) {
+	private void printTableNumbers(final Collection<Table> tables) {
 		for (final Table table : tables) {
 			System.out.printf(TABLE_FORMAT, table);
 		}
 		System.out.println();
+	}
+
+	public void printOrderHistory(Table table) {
+		System.out.println("## 주문내역");
+		System.out.println("메뉴 수량 금액");
+
+		Map<Menu, OrderCount> menuByCount = table.getOrder().getOrderByCount();
+		for (Menu menu : menuByCount.keySet()) {
+			System.out.printf("%s %d %d\n", menu.getName(), menuByCount.get(menu).getAmount(), menu.getPrice());
+		}
+	}
+
+	public void printPrice(long price) {
+		System.out.printf("%d원\n", price);
 	}
 }

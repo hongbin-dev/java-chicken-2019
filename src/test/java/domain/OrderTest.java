@@ -35,12 +35,30 @@ class OrderTest {
 			.hasMessageContaining("잘못된 범위의 값을 입력했습니다.");
 	}
 
+	@DisplayName("주문목록을 초기화한다.")
+	@Test
+	void clear() {
+		Order order = new Order();
+		Menu 후라이드 = new Menu(1, "후라이드", Category.CHICKEN, 16_000);
+		order.add(후라이드, OrderCount.of(99));
+
+		order.clear();
+
+		Map<Menu, OrderCount> actual = order.getOrderByCount();
+		assertThat(actual.size()).isEqualTo(0);
+	}
+
+	@DisplayName("주문이 비어 있는지 확인한다.")
+	@Test
+	void isEmpty() {
+		Order order = new Order();
+		assertThat(order.isEmpty()).isTrue();
+	}
+
 	//0. 기능을 입력받는다.
 	// 1. 주문등록
 	//     - 테이블을 보여주고 입력받는다.
-	//         - 등록된 테이블을 골라야한다.
 	//     - 메뉴를 보여주고 메뉴 번호를 입력받는다.
-	//         - 등록된 메뉴 번호여야 한다.
 	//
 	// 2. 결제하기
 	//     - 테이블을 보여주고 테이블을 입력받는다.

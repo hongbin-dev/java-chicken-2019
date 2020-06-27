@@ -9,8 +9,28 @@ public class Table {
 		this.order = order;
 	}
 
+	public void addOrder(Menu menu, OrderCount orderCount) {
+		order.add(menu, orderCount);
+	}
+
 	@Override
 	public String toString() {
 		return Integer.toString(number);
+	}
+
+	public int getNumber() {
+		return number;
+	}
+
+	public Order getOrder() {
+		return order;
+	}
+
+	public void clear() {
+		order.clear();
+	}
+
+	public boolean isEmpty() {
+		return order.isEmpty();
 	}
 }

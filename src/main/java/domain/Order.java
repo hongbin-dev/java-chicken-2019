@@ -4,8 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Order {
-	private static final int MAX_COUNT = 99;
-
 	private final Map<Menu, OrderCount> orderByCount;
 
 	public Order() {
@@ -24,5 +22,13 @@ public class Order {
 
 	public Map<Menu, OrderCount> getOrderByCount() {
 		return orderByCount;
+	}
+
+	public void clear() {
+		orderByCount.clear();
+	}
+
+	public boolean isEmpty() {
+		return orderByCount.isEmpty();
 	}
 }
