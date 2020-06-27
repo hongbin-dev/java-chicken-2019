@@ -1,7 +1,7 @@
 package controller;
 
-import domain.PaymentType;
 import domain.PosMenu;
+import domain.payment.PaymentType;
 import domain.table.Table;
 import domain.table.TableRepository;
 import domain.table.Tables;

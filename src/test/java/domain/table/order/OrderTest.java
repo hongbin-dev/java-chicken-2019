@@ -1,4 +1,4 @@
-package domain;
+package domain.table.order;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -7,8 +7,6 @@ import java.util.Map;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import domain.table.order.Order;
-import domain.table.order.OrderCount;
 import domain.table.order.menu.Category;
 import domain.table.order.menu.Menu;
 
@@ -60,17 +58,27 @@ class OrderTest {
 		assertThat(order.isEmpty()).isTrue();
 	}
 
-	//0. 기능을 입력받는다.
-	// 1. 주문등록
-	//     - 테이블을 보여주고 입력받는다.
-	//     - 메뉴를 보여주고 메뉴 번호를 입력받는다.
-	//
-	// 2. 결제하기
-	//     - 테이블을 보여주고 테이블을 입력받는다.
-	//         - 주문이 있는 테이블을 골라야한다.
-	//     - 주문내역을 보여주고, 결제 방식을 입력받는다.
-	//         - 치킨은 10마리당 만원씩 할인된다.
-	//         - 추가로 현금결제시 5% 할인된다.
-	//     - 최종 결제금액을보여준다.
-	// 3. 게임 종료
+	@Test
+	void calculateTotalMoney() {
+		Order order = new Order();
+		Menu 후라이드 = new Menu(1, "후라이드", Category.CHICKEN, 10_000);
+		order.add(후라이드, OrderCount.of(5));
+
+		long actual = order.calculateTotalMoney();
+
+		assertThat(actual).isEqualTo(50000);
+	}
+
+	@DisplayName("주문에서 치킨의 수를 센다.")
+	@Test
+	void calculateChickenCount() {
+		Order order = new Order();
+		Menu 후라이드 = new Menu(1, "후라이드", Category.CHICKEN, 10_000);
+		Menu 양념 = new Menu(2, "양념이드", Category.CHICKEN, 10_000);
+		order.add(후라이드, OrderCount.of(5));
+		order.add(양념, OrderCount.of(1));
+
+		int actual = order.calculateChickenCount();
+		assertThat(actual).isEqualTo(6);
+	}
 }

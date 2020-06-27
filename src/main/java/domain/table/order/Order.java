@@ -22,15 +22,36 @@ public class Order {
 		orderByCount.put(menu, orderCount.add(weight));
 	}
 
-	public Map<Menu, OrderCount> getOrderByCount() {
-		return orderByCount;
-	}
-
 	public void clear() {
 		orderByCount.clear();
 	}
 
 	public boolean isEmpty() {
 		return orderByCount.isEmpty();
+	}
+
+	public long calculateTotalMoney() {
+		long sum = 0;
+
+		for (Menu menu : orderByCount.keySet()) {
+			OrderCount orderCount = orderByCount.get(menu);
+			sum += menu.calculatePrice(orderCount);
+		}
+
+		return sum;
+	}
+
+	public int calculateChickenCount() {
+		int sum = 0;
+		for (Menu menu : orderByCount.keySet()) {
+			if (menu.isChicken()) {
+				sum += orderByCount.get(menu).getAmount();
+			}
+		}
+		return sum;
+	}
+
+	public Map<Menu, OrderCount> getOrderByCount() {
+		return orderByCount;
 	}
 }

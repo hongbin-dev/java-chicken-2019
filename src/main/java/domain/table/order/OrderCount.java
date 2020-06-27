@@ -34,6 +34,10 @@ public class OrderCount {
 		return amount;
 	}
 
+	public long multiply(int price) {
+		return amount * price;
+	}
+
 	static final class OrderCountCache {
 		private static final Map<Integer, OrderCount> CACHE = IntStream.rangeClosed(MIN_RANGE, MAX_RANGE)
 			.mapToObj(OrderCount::new)

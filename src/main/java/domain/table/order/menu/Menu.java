@@ -2,6 +2,8 @@ package domain.table.order.menu;
 
 import java.util.Objects;
 
+import domain.table.order.OrderCount;
+
 public class Menu {
 	private final int number;
 	private final String name;
@@ -13,6 +15,10 @@ public class Menu {
 		this.name = name;
 		this.category = category;
 		this.price = price;
+	}
+
+	public long calculatePrice(OrderCount orderCount) {
+		return orderCount.multiply(price);
 	}
 
 	@Override
@@ -52,5 +58,9 @@ public class Menu {
 
 	public int getPrice() {
 		return price;
+	}
+
+	public boolean isChicken() {
+		return this.category == Category.CHICKEN;
 	}
 }

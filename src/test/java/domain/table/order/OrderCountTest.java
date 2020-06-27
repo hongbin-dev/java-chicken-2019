@@ -1,4 +1,4 @@
-package domain;
+package domain.table.order;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -6,8 +6,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-
-import domain.table.order.OrderCount;
 
 class OrderCountTest {
 	@DisplayName("주문수량은 1~99를 넘지 않는다.")
@@ -28,4 +26,15 @@ class OrderCountTest {
 
 		assertThat(actual.getAmount()).isEqualTo(10);
 	}
+
+	@DisplayName("수량과 곱셉을 계산한다.")
+	@Test
+	void multiply() {
+		OrderCount orderCount = OrderCount.of(5);
+
+		long actual = orderCount.multiply(5000);
+
+		assertThat(actual).isEqualTo(25_000);
+	}
+
 }
